@@ -1,0 +1,12 @@
+:root { color-scheme: dark; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #060a14; color: #eef2ff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+.preview-banner { position: relative; z-index: 4; margin: 0; padding: 12px 18px; border-bottom: 1px solid #283657; background: #10182b; color: #c9d3ee; text-align: center; font-size: 12px; line-height: 1.6; }
+.preview-banner strong { color: #eee8ff; }
+.preview-label { display: block; margin: 16px 0 10px; color: #bac7e0; font-size: 13px; }
+.preview-input { width: 100%; padding: 14px; border: 1px solid #344362; border-radius: 12px; background: #101a2e; color: #f3f5ff; }
+.preview-stack { display: grid; gap: 18px; }
+.preview-note { color: #aebdd8; font-size: 13px; line-height: 1.7; }
+.preview-brand { text-align: center; color: #8393b3; font-size: 11px; padding: 12px; }
+.preview-brand strong { color: #c8b9ff; }
