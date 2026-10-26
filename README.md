@@ -79,7 +79,7 @@ Deposits and withdrawals are public. A withdrawal reveals its destination and am
 The demonstrated integration uses faucet-funded Stellar Testnet assets. It uses development cryptography and is unsuitable for real-value custody or Mainnet use.
 
 ## Run the frontend
-
+The passcode for entering the link is Demo@135 
 Use Node.js 24 or newer.
 
 ```bash
