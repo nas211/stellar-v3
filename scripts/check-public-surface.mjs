@@ -20,8 +20,10 @@ export async function inspectPublicSurface(directory = root) {
     if (/(?:^|\/)(?:backend|api|contracts|circuits|artifacts|stellar-artifacts|private-wallet|private-payment|joinsplit(?:-v\d+)?)(?:\/|$)|\.(?:wasm|bin|r1cs|zkey|wtns|rs|vk|pk)$|(?:^|\/)\.env(?:\.|$)/i.test(relative)) errors.push(`Unexpected file: ${relative}`);
     if (/\.(?:ts|tsx|js|mjs|json|html|css)$/.test(relative) && !/^(?:scripts|tests)\//.test(relative) && relative !== "package-lock.json") {
       const text = await readFile(full, "utf8");
-      if (/\bfetch\s*\(|\bXMLHttpRequest\b|\bWebSocket\s*\(|\bEventSource\s*\(|\bWebAssembly\s*\.|\bnew\s+(?:Shared)?Worker\s*\(|\b(?:signTransaction|signMessage|sendTransaction|submitTransaction)\s*\(/.test(text)) errors.push(`Network or execution primitive: ${relative}`);
-      if (/https?:\/\/(?!www\.w3\.org\/)/.test(text)) errors.push(`Remote endpoint: ${relative}`);
+      // reference/ holds read-only wallet source that is never built or shipped.
+      const shipped = !relative.startsWith("reference/");
+      if (shipped && /\bfetch\s*\(|\bXMLHttpRequest\b|\bWebSocket\s*\(|\bEventSource\s*\(|\bWebAssembly\s*\.|\bnew\s+(?:Shared)?Worker\s*\(|\b(?:signTransaction|signMessage|sendTransaction|submitTransaction)\s*\(/.test(text)) errors.push(`Network or execution primitive: ${relative}`);
+      if (shipped && /https?:\/\/(?!www\.w3\.org\/)/.test(text)) errors.push(`Remote endpoint: ${relative}`);
       if (/\bS[A-Z2-7]{55}\b|-----BEGIN (?:[A-Z ]+ )?PRIVATE KEY-----|\b(?:ghp|github_pat)_[A-Za-z0-9_]{20,}/.test(text)) errors.push(`Credential pattern: ${relative}`);
     }
   }

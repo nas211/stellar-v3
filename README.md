@@ -1,6 +1,8 @@
 # StealthOS — Stellar Frontend
 
 > **Proprietary Vanta engine not included. Try it live at [app.stealthos.xyz/stellar](https://app.stealthos.xyz/stellar) (password `Demo@135`) or watch the demo video.**
+>
+> The Stellar wallet integration source is in [`reference/stellar-app/`](reference/stellar-app/) for review. `npm run dev` runs the interface preview.
 
 StealthOS is a multichain financial privacy application powered by **Vanta, our proprietary zero-knowledge transaction protocol developed and owned by StealthOS**. The Stellar integration combines Soroban smart-contract settlement, encrypted private notes and cryptographic proofs to support private XLM transfers.
 
